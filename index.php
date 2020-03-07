@@ -17,61 +17,9 @@ require_once "config/db.php";
 require_once "header.php";
 
 $query = "SELECT * FROM `products`";
-$result = mysqli_query($mysqli, $query);
+$result = mysqli_query($conn, $query);
+$products = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
-var_dump($result);
-
-
-$products = [
-    0 => [
-        "name" => "Товар 1",
-        "img" => "/img/product1.jpg",
-        "describe" => "Описание",
-        "producturl" => "/",
-    ],
-    1 => [
-        "name" => "Товар 1",
-        "img" => "/img/product1.jpg",
-        "describe" => "Описание",
-        "producturl" => "/",
-    ],
-    2 => [
-        "name" => "Товар 1",
-        "img" => "/img/product1.jpg",
-        "describe" => "Описание",
-        "producturl" => "/",
-    ],
-    3 => [
-        "name" => "Товар 1",
-        "img" => "/img/product1.jpg",
-        "describe" => "Описание",
-        "producturl" => "/",
-    ],
-    4 => [
-        "name" => "Товар 1",
-        "img" => "/img/product1.jpg",
-        "describe" => "Описание",
-        "producturl" => "/",
-    ],
-    5 => [
-        "name" => "Товар 1",
-        "img" => "/img/product1.jpg",
-        "describe" => "Описание",
-        "producturl" => "/",
-    ],
-    6 => [
-        "name" => "Товар 1",
-        "img" => "/img/product1.jpg",
-        "describe" => "Описание",
-        "producturl" => "/",
-    ],
-    7 => [
-        "name" => "Товар 1",
-        "img" => "/img/product1.jpg",
-        "describe" => "Описание",
-        "producturl" => "/",
-    ],
-];
 ?>
 <div class="container">
     <section class="mt-4">
@@ -123,7 +71,7 @@ $products = [
                     </div>
                     <img src="/img/duhovka.jpg" height="220px" alt="Card image cap">
                     <div class="card-body">
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <p class="card-text"><?= $product['description'] ?></p>
                         <p class="text-center"><a href="#" class="btn btn-primary">Переход куда-нибудь</a></p>
                     </div>
 
@@ -142,7 +90,7 @@ $products = [
                     <img src="<?=$product['img'] ?>" class="card-img-top" alt="">
                     <div class="card-body">
                         <h5 class="card-title"><?= $product['name'] ?></h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <p class="card-text"><?= $product['description'] ?></p>
                         <a href="#" class="btn btn-primary">В корзину</a>
                     </div>
                 </div>
